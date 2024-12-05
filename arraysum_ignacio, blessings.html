@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Array Sum</title>
+</head>
+<body>
+    <h1>Simple Array Sum Calculator</h1>
+    <label for="numberInput">Enter numbers (separated by spaces):</label><br>
+    <input type="text" id="numberInput" placeholder="e.g. 1 2 3 4 5"><br><br>
+    <button id="calculateBtn">Calculate Sum</button>
+    <h2 id="result"></h2>
+
+    <script>
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            const input = document.getElementById('numberInput').value;
+            const numbers = input.split(' ').map(Number); // Convert input to an array of numbers
+            const sum = simpleArraySum(numbers);
+            document.getElementById('result').innerText = 'Sum: ' + sum;
+        });
+
+        function simpleArraySum(ar) {
+            let sum = 0; // Initialize the sum variable
+            for (let num of ar) { // Iterate through each integer in the array
+                sum += num; // Add each integer to the sum
+            }
+            return sum; // Return the final sum
+        }
+    </script>
+</body>
+</html>
