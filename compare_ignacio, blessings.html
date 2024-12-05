@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Triplets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body style="background-color: blueviolet;display: flex; align-items: center;">
+   <div style="background-color: azure;margin: auto; padding: 50px; border-radius: 10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;width: 60%;">
+     <h1>Compare Triplets</h1>
+
+    <label for="aliceScores">Alice's Scores (space-separated):</label><br>
+    <input type="text" id="aliceScores" placeholder="e.g. 5 6 7"><br>
+
+    <label for="bobScores">Bob's Scores (space-separated):</label><br>
+    <input type="text" id="bobScores" placeholder="e.g. 3 6 10"><br>
+
+    <button id="compareBtn">Compare</button>
+
+    <h2>Scores:</h2>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('compareBtn').addEventListener('click', function() {
+            const aliceInput = document.getElementById('aliceScores').value;
+            const bobInput = document.getElementById('bobScores').value;
+
+            const aliceScores = aliceInput.split(' ').map(Number);
+            const bobScores = bobInput.split(' ').map(Number);
+
+            const result = compareTriplets(aliceScores, bobScores);
+            document.getElementById('result').innerText = 'Alice: ' + result[0] + ' | Bob: ' + result[1];
+        });
+
+        function compareTriplets(a, b) {
+            let aliceScore = 0; 
+            let bobScore = 0; 
+            for (let i = 0; i < 3; i++) {
+                if (a[i] > b[i]) {
+                    aliceScore++; 
+                } else if (a[i] < b[i]) {
+                    bobScore++; 
+                }
+            }
+            return [aliceScore, bobScore];
+        }
+    </script>
+    </div>
+</body>
+</html>
